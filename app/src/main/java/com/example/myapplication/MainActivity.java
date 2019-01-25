@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openregister(){
-        Intent intent = new Intent(this, Articles.class);
+        Intent intent = new Intent(this, NavBar.class);
         startActivity(intent);
 
 

@@ -10,9 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Emergency"
+            android:label="@string/title_activity_emergency"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Vitals"
+            android:label="@string/title_activity_vitals"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Appointments"
+            android:label="@string/title_activity_appointments"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".addpillrem"
+            android:label="@string/title_activity_addpillrem"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PillReminder"
+            android:label="@string/title_activity_pill_reminder"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".Articles"
             android:label="@string/title_activity_articles"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".NavBar"
             android:label="@string/title_activity_nav_bar"

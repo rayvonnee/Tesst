@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -83,16 +84,31 @@ public class NavBar extends AppCompatActivity
         if (id == R.id.idHome) {
             // Handle the camera action
         } else if (id == R.id.idArticles) {
+            Intent Articleopen = new Intent(NavBar.this, Articles.class);
+                    startActivity(Articleopen);
+                    return false;
 
         } else if (id == R.id.idPillReminder) {
+            Intent PillRemopen = new Intent(NavBar.this, PillReminder.class);
+            startActivity(PillRemopen);
+            return false;
 
         } else if (id == R.id.idAppointments) {
+            Intent Appointopen = new Intent(NavBar.this, Appointments.class);
+            startActivity(Appointopen);
+            return false;
 
         } else if (id == R.id.idVitals_Tracker) {
+            Intent Vitalopen = new Intent(NavBar.this, Vitals.class);
+            startActivity(Vitalopen);
+            return false;
 
         } else if (id == R.id.idNotifications) {
 
         } else if (id == R.id.idEmergency) {
+            Intent Emergencyopen = new Intent(NavBar.this, Emergency.class);
+            startActivity(Emergencyopen);
+            return false;
 
         } else if (id == R.id.idProfile) {
 
