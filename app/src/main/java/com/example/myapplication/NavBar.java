@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -23,15 +26,6 @@ public class NavBar extends AppCompatActivity
         setContentView(R.layout.activity_nav_bar);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -79,41 +73,56 @@ public class NavBar extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+
+        Fragment fragment = null;
+
+
+
         int id = item.getItemId();
 
         if (id == R.id.idHome) {
-            // Handle the camera action
+
+            fragment = new HomeFragment();
+
         } else if (id == R.id.idArticles) {
-            Intent Articleopen = new Intent(NavBar.this, Articles.class);
-                    startActivity(Articleopen);
-                    return false;
+
+            fragment = new ArtcileFragment();
 
         } else if (id == R.id.idPillReminder) {
-            Intent PillRemopen = new Intent(NavBar.this, PillReminder.class);
-            startActivity(PillRemopen);
-            return false;
+
+            fragment = new PillReminderFragment();
 
         } else if (id == R.id.idAppointments) {
-            Intent Appointopen = new Intent(NavBar.this, Appointments.class);
-            startActivity(Appointopen);
-            return false;
+
+            fragment = new AppointmentsFragment();
 
         } else if (id == R.id.idVitals_Tracker) {
-            Intent Vitalopen = new Intent(NavBar.this, Vitals.class);
-            startActivity(Vitalopen);
-            return false;
+
+            fragment = new VitalsFragment();
 
         } else if (id == R.id.idNotifications) {
 
         } else if (id == R.id.idEmergency) {
-            Intent Emergencyopen = new Intent(NavBar.this, Emergency.class);
-            startActivity(Emergencyopen);
-            return false;
+
+            fragment = new EmergencyFragment();
 
         } else if (id == R.id.idProfile) {
 
+            fragment = new ProfileFragment();
+
+
         } else if (id == R.id.idsignout) {
         }
+
+        if(fragment != null){
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction ft = fragmentManager.beginTransaction();
+
+            ft.replace(R.id.screen_area,fragment);
+
+            ft.commit();
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
