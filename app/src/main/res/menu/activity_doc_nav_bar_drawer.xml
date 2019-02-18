@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/idHomeDoc"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/idArticlesDoc"
+            android:icon="@drawable/ic_action_book"
+            android:title="Articles" />
+
+        <item
+            android:id="@+id/idAppointmentsDoc"
+            android:icon="@drawable/ic_action_calendar_day"
+            android:title="Appointments" />
+        <item
+            android:id="@+id/idPatientInfoDoc"
+            android:icon="@drawable/ic_supervisor_account"
+            android:title="Patient Information Directory" />
+        <item
+            android:id="@+id/idDocInfoDirDoc"
+            android:icon="@drawable/ic_supervisor_account"
+            android:title="Doctor Information Directory" />
+             <item
+            android:id="@+id/idProfileDoc"
+            android:icon="@drawable/ic_account_circle"
+            android:title="Profile" />
+        <item
+            android:id="@+id/idsignoutDoc"
+            android:icon="@drawable/ic_exit_to_app"
+            android:title="Signout" />
+    </group>
+
+</menu>

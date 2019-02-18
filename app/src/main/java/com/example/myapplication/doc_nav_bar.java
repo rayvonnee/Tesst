@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,22 +16,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.google.firebase.auth.FirebaseAuth;
-
-public class NavBar extends AppCompatActivity
+public class doc_nav_bar extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nav_bar);
+        setContentView(R.layout.activity_doc_nav_bar);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        firebaseAuth = FirebaseAuth.getInstance();
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -57,7 +49,7 @@ public class NavBar extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.nav_bar, menu);
+        getMenuInflater().inflate(R.menu.doc_nav_bar, menu);
         return true;
     }
 
@@ -87,53 +79,43 @@ public class NavBar extends AppCompatActivity
 
         int id = item.getItemId();
 
-        if (id == R.id.idHome) {
+        if (id == R.id.idHomeDoc) {
 
-            fragment = new HomeFragment();
+            fragment = new DocHomeFragment();
 
-        } else if (id == R.id.idArticles) {
+            // Handle the camera action
+        } else if (id == R.id.idArticlesDoc) {
 
             fragment = new DocArticleFragment();
 
-        } else if (id == R.id.idPillReminder) {
+        } else if (id == R.id.idAppointmentsDoc) {
 
-            fragment = new PillReminderFragment();
+            fragment = new DocAppointmentsFragment();
 
-        } else if (id == R.id.idAppointments) {
+        } else if (id == R.id.idPatientInfoDoc) {
 
-            fragment = new AppointmentsFragment();
+            fragment = new DocPatientInfoDirFragment();
 
-        } else if (id == R.id.idVitals_Tracker) {
+        } else if (id == R.id.idDocInfoDirDoc) {
 
-            fragment = new VitalsFragment();
+            fragment = new DocDocInfoDirFragment();
 
-        } else if (id == R.id.idNotifications) {
+        } else if (id == R.id.idProfileDoc) {
 
-        } else if (id == R.id.idEmergency) {
+            fragment = new DocProfileFragment();
 
-            fragment = new EmergencyFragment();
+        }else if (id == R.id.idsignoutDoc) {
 
-        } else if (id == R.id.idProfile) {
-
-            fragment = new ProfileFragment();
-
-
-        } else if (id == R.id.idsignout) {
-
-                    firebaseAuth.signOut();
-                    finish();
-                    startActivity(new Intent(this, MainActivity.class));
         }
 
         if(fragment != null){
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction ft = fragmentManager.beginTransaction();
 
-            ft.replace(R.id.screen_area,fragment);
+            ft.replace(R.id.docscreen,fragment);
 
             ft.commit();
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,10 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".LoginActivity"
+            android:label="LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".doc_nav_bar"
+            android:label="@string/title_activity_doc_nav_bar"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Emergency"
             android:label="@string/title_activity_emergency"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Vitals"
             android:label="@string/title_activity_vitals"
@@ -37,7 +46,8 @@
             android:name=".NavBar"
             android:label="@string/title_activity_nav_bar"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".register" />
+        <activity android:name=".DocArticleFragment$DocArticleFragment1"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
