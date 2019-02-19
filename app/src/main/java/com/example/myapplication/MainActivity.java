@@ -9,6 +9,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextEmail;
     private EditText   editTextPassword;
     private EditText editTextConfirmPassword;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
+    private TextView selectdocpat;
     private TextView textViewSignin;
 
     private ProgressDialog progressDialog;
@@ -65,6 +70,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 
         editTextConfirmPassword = (EditText) findViewById(R.id.editTextConfirmPassword);
+
+        radioGroup = (RadioGroup) findViewById(R.id.id_radioGroup);
+
+        radioButton = (RadioButton) findViewById(R.id.id_buttonDoc);
+
+        //patbtn = (RadioButton) findViewById(R.id.id_buttonPat);
+
 
         textViewSignin = (TextView) findViewById(R.id.textViewSignin);
 
@@ -124,10 +136,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                             String name = editTextName.getText().toString().trim();
                             String age = editTextAge.getText().toString().trim();
+                            int btnid = radioGroup.getCheckedRadioButtonId();
+
+                            radioButton = findViewById(btnid);
+
+                            String type = radioButton.getText().toString().trim();
 
                             Map newPost = new HashMap();
                             newPost.put("Name", name);
                             newPost.put("Age", age);
+                            newPost.put("Type", type);
 
                             currrent_user_db.setValue(newPost);
                             }

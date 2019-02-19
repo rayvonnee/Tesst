@@ -31,39 +31,42 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 
 public class DocArticleFragment extends Fragment {
-            @Nullable
+    private ListView listview1;
+    ArrayList<String> titles;
+    ArrayList<String> links;
+
+    @Nullable
         //@Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.doc_fragment_article, null);
+           View v = inflater.inflate(R.layout.doc_fragment_article, null);
+                listview1 = (ListView) v.findViewById(R.id.lvRss);
 
+                getActivity().setContentView(R.layout.doc_fragment_article);
+
+                titles = new ArrayList<String>();
+                links = new ArrayList<String>();
+
+                listview1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Uri uri = Uri.parse(links.get(position));
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+
+                    }
+                });
+
+                new ProcessInBackground().execute();
+                return v;
         }
 
-        ListView lvRss;
-        ArrayList<String> titles;
-        ArrayList<String> links;
+
 
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            getActivity().setContentView(R.layout.doc_fragment_article);
 
-            lvRss = (ListView) getActivity().findViewById(R.id.lvRss);
-
-            titles = new ArrayList<String>();
-            links = new ArrayList<String>();
-
-            lvRss.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Uri uri = Uri.parse(links.get(position));
-                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                    startActivity(intent);
-
-                }
-            });
-
-            new ProcessInBackground().execute();
         }
 
         public InputStream getInputStream(URL url) {
@@ -92,7 +95,7 @@ public class DocArticleFragment extends Fragment {
             protected Exception doInBackground(Integer... integers) {
 
                 try {
-                    URL url = new URL("http://feeds.news24.com/articles/news24/TopStories/rss");
+                    URL url = new URL("http://www.cardiobrief.org/feed");
 
                     XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 
@@ -145,7 +148,7 @@ public class DocArticleFragment extends Fragment {
 
                 ArrayAdapter<String> adapter;
                 adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, titles);
-                lvRss.setAdapter(adapter);
+                listview1.setAdapter(adapter);
 
                 progressDialog.dismiss();
             }
