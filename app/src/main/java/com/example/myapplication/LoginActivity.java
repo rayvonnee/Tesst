@@ -17,6 +17,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
@@ -91,9 +96,33 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                         if (task.isSuccessful()) {
 
-                            //start profile activity
-                            finish();
-                            startActivity(new Intent(getApplicationContext(),NavBar.class));
+                            //user is successfully registered and logged in
+                            //we will start profile acticity here
+                            //only toast
+                            if (firebaseAuth.getCurrentUser() != null) {
+
+                                String u_id = firebaseAuth.getCurrentUser().getUid();
+                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(u_id).child("Type");;
+                                databaseReference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        String childType = String.valueOf(dataSnapshot.getValue());
+                                        if(childType.equals("Patient")){
+                                            finish();
+                                            startActivity(new Intent(getApplicationContext(), NavBar.class));
+                                        }
+                                        else{
+                                            startActivity(new Intent(getApplicationContext(), doc_nav_bar.class));
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
+                            }
                             Toast.makeText(LoginActivity.this,"Login Successful...", Toast.LENGTH_SHORT).show();
                         }
                         else{
