@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -16,8 +17,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class NavBar extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,6 +49,40 @@ public class NavBar extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View navHeaderView = navigationView.getHeaderView(0);
+        final TextView TextViewDispName = (TextView)navHeaderView.findViewById(R.id.textViewDisplayName);
+        final TextView TextViewDispEmail = (TextView)navHeaderView.findViewById(R.id.textViewDisplayEmail);
+        String u_id = firebaseAuth.getCurrentUser().getUid();
+        FirebaseUser useremail = firebaseAuth.getCurrentUser();
+        final String email = useremail.getEmail();
+        FirebaseDatabase.getInstance().getReference().child("Users").child(u_id).child("Name")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String childName = String.valueOf(dataSnapshot.getValue());
+                        TextViewDispName.setText(childName);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+        FirebaseDatabase.getInstance().getReference().child("Users").child(u_id)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        //String childEmail = String.valueOf(email);
+                        TextViewDispEmail.setText(email);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
     }
 
     @Override

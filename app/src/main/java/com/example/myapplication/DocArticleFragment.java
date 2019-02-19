@@ -4,18 +4,17 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -23,14 +22,16 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
+import java.security.PublicKey;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 
 public class DocArticleFragment extends Fragment {
-    public class DocArticleFragment1 extends AppCompatActivity {
-
-        @Nullable
+            @Nullable
         //@Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             return inflater.inflate(R.layout.doc_fragment_article, null);
@@ -43,11 +44,11 @@ public class DocArticleFragment extends Fragment {
 
 
         @Override
-        protected void onCreate(Bundle savedInstanceState) {
+        public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.doc_fragment_article);
+            getActivity().setContentView(R.layout.doc_fragment_article);
 
-            lvRss = (ListView) findViewById(R.id.lvRss);
+            lvRss = (ListView) getActivity().findViewById(R.id.lvRss);
 
             titles = new ArrayList<String>();
             links = new ArrayList<String>();
@@ -56,9 +57,9 @@ public class DocArticleFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Uri uri = Uri.parse(links.get(position));
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(uri);
-                    getActivity().startActivity(i);
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+
                 }
             });
 
@@ -74,7 +75,8 @@ public class DocArticleFragment extends Fragment {
         }
 
         public class ProcessInBackground extends AsyncTask<Integer, Void, Exception> {
-            ProgressDialog progressDialog = new ProgressDialog(DocArticleFragment1.this);
+
+            ProgressDialog progressDialog = new ProgressDialog(getActivity());
 
             Exception exception = null;
 
@@ -141,14 +143,14 @@ public class DocArticleFragment extends Fragment {
             protected void onPostExecute(Exception s) {
                 super.onPostExecute(s);
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(DocArticleFragment1.this, android.R.layout.simple_list_item_1, titles);
+                ArrayAdapter<String> adapter;
+                adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, titles);
                 lvRss.setAdapter(adapter);
 
                 progressDialog.dismiss();
             }
         }
     }
-}
 
     //@Override
     /*public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

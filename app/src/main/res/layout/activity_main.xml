@@ -6,12 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="Cardiac Care Application" />
+
+    </android.support.design.widget.AppBarLayout>
+
+<ScrollView
+    android:layout_marginTop="120dp"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:contentDescription="@string/nav_header_desc"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            app:srcCompat="@drawable/logo" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -20,6 +53,22 @@
             android:text="User Registration"
             android:id="@+id/textView"
             android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:layout_margin="15dp"
+            android:hint="Enter Your Name"
+            android:id="@+id/editTextName"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:layout_margin="15dp"
+            android:hint="Enter Your Age"
+            android:id="@+id/editTextAge"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <EditText
             android:layout_margin="15dp"
@@ -34,6 +83,14 @@
             android:inputType="textPassword"
             android:hint="Enter Your Password"
             android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:layout_margin="15dp"
+            android:inputType="textPassword"
+            android:hint="Enter Your Password Again"
+            android:id="@+id/editTextConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -55,5 +112,8 @@
 
 
     </LinearLayout>
+
+</ScrollView>
+
 
 </RelativeLayout>

@@ -17,12 +17,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button buttonRegister;
+    private EditText editTextName;
+    private EditText editTextAge;
     private EditText editTextEmail;
     private EditText   editTextPassword;
+    private EditText editTextConfirmPassword;
     private TextView textViewSignin;
 
     private ProgressDialog progressDialog;
@@ -48,9 +56,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
 
+        editTextName = (EditText) findViewById(R.id.editTextName);
+
+        editTextAge = (EditText) findViewById(R.id.editTextAge);
+
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
 
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+
+        editTextConfirmPassword = (EditText) findViewById(R.id.editTextConfirmPassword);
 
         textViewSignin = (TextView) findViewById(R.id.textViewSignin);
 
@@ -61,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void registerUser() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
+        String confirmpassword = editTextConfirmPassword.getText().toString().trim();
 
 
         if (TextUtils.isEmpty(email)) {
@@ -69,10 +84,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
+
         if (TextUtils.isEmpty(password)) {
             //password is empty
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
             //stopping execution from going further
+            return;
+        }
+
+        if (!password.equals(confirmpassword)){
+            Toast.makeText(this,"Passwords Do Not match", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -97,9 +118,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             } else {
                                 Toast.makeText(MainActivity.this, "Registeration Failed", Toast.LENGTH_SHORT).show();
                             }
+                            String user_id = firebaseAuth.getCurrentUser().getUid();
+                            DatabaseReference currrent_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+
+
+                            String name = editTextName.getText().toString().trim();
+                            String age = editTextAge.getText().toString().trim();
+
+                            Map newPost = new HashMap();
+                            newPost.put("Name", name);
+                            newPost.put("Age", age);
+
+                            currrent_user_db.setValue(newPost);
+                            }
                             progressDialog.dismiss();
                         }
-                    }});
+                    });
 
     }
 
