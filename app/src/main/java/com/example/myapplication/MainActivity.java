@@ -58,7 +58,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(firebaseAuth.getCurrentUser() !=null){
             //profile activity here
             finish();
-            startActivity(new Intent(getApplicationContext(), NavBar.class));
+            String u_id = firebaseAuth.getCurrentUser().getUid();
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(u_id).child("Type");;
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String childType = String.valueOf(dataSnapshot.getValue());
+                    if(childType.equals("Patient")){
+                        startActivity(new Intent(getApplicationContext(), NavBar.class));
+                    }
+                    else{
+                        startActivity(new Intent(getApplicationContext(), doc_nav_bar.class));
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
         }
 
         progressDialog = new ProgressDialog(this);
@@ -172,10 +190,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             newPost.put("Type", type);
 
                             currrent_user_db.setValue(newPost);
-                            }
-                            progressDialog.dismiss();
                         }
-                    });
+                        progressDialog.dismiss();
+                    }
+                });
 
     }
 
