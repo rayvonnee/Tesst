@@ -148,8 +148,6 @@ public class NavBar extends AppCompatActivity
 
             fragment = new VitalsFragment();
 
-        } else if (id == R.id.idNotifications) {
-
         } else if (id == R.id.idEmergency) {
 
             fragment = new EmergencyFragment();

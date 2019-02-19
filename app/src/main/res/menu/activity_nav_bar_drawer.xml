@@ -24,10 +24,7 @@
             android:id="@+id/idVitals_Tracker"
             android:icon="@drawable/ic_action_temperature"
             android:title="Vitals Tracker" />
-        <item
-            android:id="@+id/idNotifications"
-            android:icon="@drawable/ic_action_bell"
-            android:title="Notifications" />
+
         <item
             android:id="@+id/idEmergency"
             android:icon="@drawable/ic_action_phone_outgoing"
