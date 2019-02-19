@@ -41,7 +41,7 @@ public class DocArticleFragment extends Fragment {
            View v = inflater.inflate(R.layout.doc_fragment_article, null);
                 listview1 = (ListView) v.findViewById(R.id.lvRss);
 
-                getActivity().setContentView(R.layout.doc_fragment_article);
+                //getActivity().setContentView(R.layout.doc_fragment_article);
 
                 titles = new ArrayList<String>();
                 links = new ArrayList<String>();
@@ -92,10 +92,10 @@ public class DocArticleFragment extends Fragment {
             }
 
             @Override
-            protected Exception doInBackground(Integer... integers) {
+            public Exception doInBackground(Integer... integers) {
 
                 try {
-                    URL url = new URL("http://www.cardiobrief.org/feed");
+                    URL url = new URL("https://search.nejm.org/search?cnt=20&start_month=2&start_year=2009&w=*&restrict=doctype%3Aarticle&srt=0&isort=date&ts=rss&af=topic:14");
 
                     XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 
@@ -153,19 +153,11 @@ public class DocArticleFragment extends Fragment {
                 progressDialog.dismiss();
             }
         }
-    }
 
-    //@Override
-    /*public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        view.findViewById(R.id.ButtonDoc2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(),"You are inside Doc Article Fragment", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
-}*/
+}
 
 
