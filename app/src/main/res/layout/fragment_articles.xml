@@ -1,89 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <Button
-        android:text="Click Me"
-        android:id="@+id/Button"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+    <ListView
+        android:id="@+id/lvRssdoc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/article1"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_margin="5dp"
-                android:background="@color/colorAccent"
-                android:gravity="center"
-                android:text="Articles" />
-
-            <TextView
-                android:id="@+id/article11"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_margin="5dp"
-                android:background="@color/colorAccent"
-                android:gravity="center"
-                android:text="Articles" />
-
-            <TextView
-                android:id="@+id/article12"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_margin="5dp"
-                android:background="@color/colorAccent"
-                android:gravity="center"
-                android:text="Articles" />
-
-            <TextView
-                android:id="@+id/article13"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_margin="5dp"
-                android:background="@color/colorAccent"
-                android:gravity="center"
-                android:text="Articles" />
-
-            <TextView
-                android:id="@+id/article14"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_margin="5dp"
-                android:background="@color/colorAccent"
-                android:gravity="center"
-                android:text="Articles" />
-
-            <TextView
-                android:id="@+id/article15"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_margin="5dp"
-                android:background="@color/colorAccent"
-                android:gravity="center"
-                android:text="Articles" />
-
-            <TextView
-                android:id="@+id/article16"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_margin="5dp"
-                android:background="@color/colorAccent"
-                android:gravity="center"
-                android:text="Articles" />
-
-
-
-        </LinearLayout>
-
-
-    </ScrollView>
+        android:layout_height="match_parent" />
 </LinearLayout>
