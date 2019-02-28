@@ -26,7 +26,6 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
             android:ems="10"
-            android:hint="120/80"
             android:inputType="textPersonName" />
 
         <TextView
@@ -46,7 +45,6 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
             android:ems="10"
-            android:hint="120"
             android:inputType="textPersonName" />
 
         <TextView
@@ -66,7 +64,6 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
             android:ems="10"
-            android:hint="75"
             android:inputType="textPersonName" />
 
         <Button
