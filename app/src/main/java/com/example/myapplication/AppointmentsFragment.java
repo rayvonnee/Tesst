@@ -25,7 +25,7 @@ public class AppointmentsFragment extends Fragment {
         textviewaptview = (TextView) vu.findViewById(R.id.textViewaptview);
         getTextviewaptnew = (TextView) vu.findViewById(R.id.textViewaptnew);
         viewPager = (ViewPager) vu.findViewById(R.id.fragment_container);
-        pagerViewAdapter = new PagerViewAdapter(getActivity().getSupportFragmentManager());
+        pagerViewAdapter = new PagerViewAdapter(getChildFragmentManager());
 
         viewPager.setAdapter(pagerViewAdapter);
 
@@ -88,8 +88,6 @@ public class AppointmentsFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        viewPager.setAdapter(pagerViewAdapter);
-
         super.onViewCreated(view, savedInstanceState);
 
 

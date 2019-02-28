@@ -15,4 +15,11 @@ public class NewAppointmentFragment extends Fragment {
     return inflater.inflate(R.layout.fragment_newappointment,null);
     
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+    }
 }
