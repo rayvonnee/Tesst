@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="medications_shape_array">
+
+        <item>capsule(s)</item>
+        <item>drop(s)</item>
+        <item>inhalation(s)</item>
+        <item>tablet(s)</item>
+        <item>powder(s)</item>
+        <item>ointment(s)</item>
+        <item>sachet(s)</item>
+        <item>unit(s)</item>
+        <item>spray(s)</item>
+        <item>suspension(s)</item>
+        <item>syrup(s)</item>
+    </array>
+
+</resources>
