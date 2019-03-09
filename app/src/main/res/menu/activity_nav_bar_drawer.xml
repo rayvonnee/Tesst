@@ -13,6 +13,13 @@
             android:icon="@drawable/ic_action_book"
             android:title="Articles" />
         <item
+            android:id="@+id/idExercise"
+            android:icon="@drawable/ic_exercise"
+            android:title="Exercise">
+
+        </item>
+
+        <item
             android:id="@+id/idPillReminder"
             android:icon="@drawable/ic_action_pill"
             android:title="Pill Reminder" />
@@ -37,6 +44,7 @@
             android:id="@+id/idsignout"
             android:icon="@drawable/ic_exit_to_app"
             android:title="Signout" />
+
     </group>
 
 

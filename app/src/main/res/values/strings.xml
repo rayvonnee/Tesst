@@ -16,4 +16,7 @@
     <string name="title_activity_vitals">Vitals</string>
     <string name="title_activity_emergency">Emergency</string>
     <string name="title_activity_doc_nav_bar">doc_nav_bar</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

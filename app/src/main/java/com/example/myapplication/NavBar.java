@@ -136,7 +136,11 @@ public class NavBar extends AppCompatActivity
 
             fragment = new ArtcileFragment();
 
-        } else if (id == R.id.idPillReminder) {
+        } else if (id == R.id.idExercise) {
+
+            fragment = new ExerciseFragment();
+
+        }else if (id == R.id.idPillReminder) {
 
             fragment = new PillReminderFragment();
 

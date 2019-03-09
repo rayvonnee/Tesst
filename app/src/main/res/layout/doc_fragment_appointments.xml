@@ -9,4 +9,55 @@
         android:id="@+id/ButtonDoc3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Appointment Schedule"
+        />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/btnsunday"
+        android:layout_width="match_parent"
+        android:text="Sunday"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:layout_width="match_parent"
+        android:id="@+id/btnmonday"
+        android:text="Monday"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:layout_width="match_parent"
+        android:id="@+id/btntuesday"
+        android:text="Tuesday"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:layout_width="match_parent"
+        android:id="@+id/btnwednesday"
+        android:text="Wednesday"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:layout_width="match_parent"
+        android:id="@+id/btnthursday"
+        android:text="Thursday"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:layout_width="match_parent"
+        android:id="@+id/btnfriday"
+        android:text="Friday"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:layout_width="match_parent"
+        android:id="@+id/btnsaturday"
+        android:text="Saturday"
+        android:layout_height="wrap_content" />
+
+
+
 </LinearLayout>
